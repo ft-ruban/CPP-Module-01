@@ -1,6 +1,16 @@
-#include "../includes/BraiiiiiiinnnzzzZ.hpp" //todo test without
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/11 08:11:42 by ldevoude          #+#    #+#             */
+/*   Updated: 2025/12/11 08:11:51 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//TODO ask si on a le droit a un setter
+#include "../includes/BraiiiiiiinnnzzzZ.hpp"
 
 int main(void){
     Zombie* z1 = newZombie("bob");

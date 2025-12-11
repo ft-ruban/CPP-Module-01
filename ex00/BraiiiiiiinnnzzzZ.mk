@@ -7,3 +7,5 @@ override SRCS		= $(addprefix $(SRCSDIR), $(SRC))
 
 override MAIN := main \
 				 Zombie.class \
+				 randomChump \
+				 newZombie

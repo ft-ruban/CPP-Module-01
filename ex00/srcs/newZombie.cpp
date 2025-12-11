@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/11 08:12:12 by ldevoude          #+#    #+#             */
+/*   Updated: 2025/12/11 08:12:13 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "includes/BraiiiiiiinnnzzzZ.hpp"
+
+#include "../includes/BraiiiiiiinnnzzzZ.hpp"
 
 Zombie* newZombie( std::string name){
     Zombie* newzombie = NULL;
@@ -11,6 +23,6 @@ Zombie* newZombie( std::string name){
         return(NULL);
     }
     newzombie->name_set(name);
-    newzombie->announce();
+    //newzombie->announce();
     return (newzombie);
 }

@@ -11,7 +11,7 @@ RM_DIR          := rm -rf
 
 CFLAGS          := -Wall -Wextra -Werror
 CPPFLAGS		:= -MMD -MP -I include/
-INC             := -I./include
+INC             := -I./includes
 
 PURPLE          := \033[1;35m]
 GREEN           := \033[1;32m]
