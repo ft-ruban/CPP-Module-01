@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Moar_brainz.hpp"
+#include "../includes/Zombie.hpp"
 
 Zombie* zombieHorde( int N, std::string name )
 {

@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Moar_brainz.hpp"
+#include "../includes/Zombie.hpp"
+
+Zombie* zombieHorde( int N, std::string name );
+
 
 int main(void){
     Zombie* Horde;
@@ -24,7 +27,7 @@ int main(void){
     Horde2 = zombieHorde(size_horde2, "Muche");
     if(!Horde2){
         delete[] Horde;
-        return(EXIT_FAILURE);
+        return(1);
     }
     for(std::size_t i = 0; i < size_horde; i++)
         Horde[i].announce();
@@ -33,5 +36,5 @@ int main(void){
     delete[] Horde;
     delete[] Horde2;
 
-    return(EXIT_SUCCESS);
+    return(0);
 }
