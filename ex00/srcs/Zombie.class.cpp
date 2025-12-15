@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../includes/Zombie.class.hpp"
+#include "../includes/Zombie.hpp"
 
 Zombie::Zombie( void ){
     return;

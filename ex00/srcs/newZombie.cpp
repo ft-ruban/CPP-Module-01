@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "../includes/BraiiiiiiinnnzzzZ.hpp"
+#include "../includes/Zombie.hpp"
 
 Zombie* newZombie( std::string name){
     Zombie* newzombie = NULL;

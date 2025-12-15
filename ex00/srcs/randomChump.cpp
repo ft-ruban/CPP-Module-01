@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/BraiiiiiiinnnzzzZ.hpp"
-
+#include "../includes/Zombie.hpp"
 
 void randomChump( std::string name){
     Zombie chump;

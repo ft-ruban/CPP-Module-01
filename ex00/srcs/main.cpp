@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/BraiiiiiiinnnzzzZ.hpp"
+#include <iostream>
+#include "../includes/Zombie.hpp"
+
+
+void randomChump( std::string name);
+Zombie* newZombie( std::string name);
 
 int main(void){
     Zombie* z1 = newZombie("bob");
