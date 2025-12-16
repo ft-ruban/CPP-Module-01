@@ -12,20 +12,26 @@
 
 
 #include <iostream>
+#include "../includes/Weapon.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
 
-int main(void){
-    
-    std::string string = "HI THIS IS BRAIN";
-    std::string* stringPTR = &string;
-    std::string& stringREF = string;
-
-    std::cout<<&string<<std::endl;
-    std::cout<<&stringPTR<<std::endl;
-    std::cout<<&stringREF<<std::endl;
-
-    std::cout<<string<<std::endl;
-    std::cout<<stringPTR<<std::endl;
-    std::cout<<stringREF<<std::endl;
-
-    return(0);
+int main()
+{
+{
+Weapon club = Weapon("crude spiked club");
+HumanA bob("Bob", club);
+bob.attack();
+club.setType("some other type of club");
+bob.attack();
+}
+// {
+// Weapon club = Weapon("crude spiked club");
+// HumanB jim("Jim");
+// jim.setWeapon(club);
+// jim.attack();
+// club.setType("some other type of club");
+// jim.attack();
+// }
+return 0;
 }
