@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.class.hpp                                   :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 08:18:27 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/11 08:18:28 by ldevoude         ###   ########.fr       */
+/*   Updated: 2025/12/17 11:39:02 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_CLASS_HPP
-# define ZOMBIE_CLASS_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 #include <iostream>
 
@@ -30,6 +30,5 @@ class Zombie {
     private:
         std::string name;
 };
-
 
 #endif

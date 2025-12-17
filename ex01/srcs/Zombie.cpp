@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BraiiiiiiinnnzzzZ.hpp                              :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/11 08:11:57 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/11 08:11:58 by ldevoude         ###   ########.fr       */
+/*   Created: 2025/12/08 15:00:19 by ldevoude          #+#    #+#             */
+/*   Updated: 2025/12/17 11:48:38 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIIIIIIINNNZZZZ_HPP
-# define BRAIIIIIIINNNZZZZ_HPP
+#include "../includes/Zombie.hpp"
 
-#include <iostream>
-#include "../includes/Zombie.class.hpp"
+Zombie::Zombie( void ){
+    return;
+}
 
-//newZombie.cpp
-Zombie* newZombie( std::string name);
-
-//randomChump.cpp
-void randomChump( std::string name);
-
-#endif
+Zombie::~Zombie( void ){
+    std::cout<<"Zombie \""<<name<<"\" destroyed."<<std::endl;
+    return;
+}

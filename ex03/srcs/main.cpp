@@ -6,34 +6,32 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 15:00:15 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/17 11:43:35 by ldevoude         ###   ########.fr       */
+/*   Updated: 2025/12/11 08:17:45 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name );
+#include <iostream>
+#include "../includes/Weapon.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
 
-int main(void){
-    Zombie* Horde;
-    Zombie* Horde2;
-    std::size_t size_horde = 5;
-    std::size_t size_horde2 = 10;
-    
-    Horde = zombieHorde(size_horde, "Truc");
-    if(!Horde)
-        return(1);
-    Horde2 = zombieHorde(size_horde2, "Muche");
-    if(!Horde2){
-        delete[] Horde;
-        return(1);
-    }
-    for(std::size_t i = 0; i < size_horde; i++)
-        Horde[i].announce();
-    for(std::size_t i = 0; i < size_horde2; i++)
-        Horde2[i].announce();
-    delete[] Horde;
-    delete[] Horde2;
-
-    return(0);
+int main()
+{
+{
+Weapon club = Weapon("crude spiked club");
+HumanA bob("Bob", club);
+bob.attack();
+club.setType("some other type of club");
+bob.attack();
+}
+// {
+// Weapon club = Weapon("crude spiked club");
+// HumanB jim("Jim");
+// jim.setWeapon(club);
+// jim.attack();
+// club.setType("some other type of club");
+// jim.attack();
+// }
+return 0;
 }
