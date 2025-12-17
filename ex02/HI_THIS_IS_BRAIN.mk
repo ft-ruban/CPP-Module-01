@@ -5,7 +5,4 @@ SRC += $(addprefix $(MAINDIR), $(addsuffix .cpp, $(MAIN)))
 
 override SRCS		= $(addprefix $(SRCSDIR), $(SRC))
 
-override MAIN := main \
-				 Zombie \
-				 randomChump \
-				 newZombie
+override MAIN := main
