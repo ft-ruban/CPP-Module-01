@@ -18,25 +18,34 @@ int main(int argc, char **argv){
     std::string line_content;
     std::string occurence_to_change;
     std::string change_content;
-    //std::size_t pos_a = 0;
-    //std::size_t found = 0;
+    std::size_t found = 0;
+    std::string file_name;
 
     if(argc!= 4){
         std::cout<<"invalid number of parameters (require 3)"<<std::endl;
         return(1);
     }
+
     occurence_to_change = argv[2];
     change_content = argv[3];
-    std::ifstream my_file_in(argv[1], std::ifstream::in);
 
+    file_name = argv[1];
+    file_name.insert(file_name.size(), ".replace");
+    
+    std::ifstream my_file_in(argv[1], std::ifstream::in); //protect if nofile
+    std::ofstream my_file_out;
 
     
+
+    my_file_out.open(file_name.c_str());
+
+
     while(getline(my_file_in, line_content)){
-        std::size_t found = line_content.find(occurence_to_change);
+        //std::size_t found = line_content.find(occurence_to_change);
 
         for(std::size_t pos_a = 0; pos_a != std::string::npos; pos_a = found + 1){
             found = line_content.find(occurence_to_change, pos_a);
-            std::cout<<found<<std::endl;
+            //std::cout<<found<<std::endl;
             if(found != std::string::npos){
                 std::cout<<"needle detected";
                 std::cout<<found<<std::endl;
