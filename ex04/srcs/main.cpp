@@ -25,7 +25,7 @@ int file_handler(std::ifstream* my_file_in, char **argv,
         std::string replace_file_name, std::ofstream* replace_file_ofstream){
     my_file_in->open(argv[1], std::ifstream::in);
     if(!my_file_in->is_open()){
-        std::cout<<"Error: unable to open '" << argv[1] << "' (file does not exist or incorrect path)"<<std::endl;
+        std::cout<<"Error: unable to open '" << argv[1] << "' (file does not exist or incorrect path or permission's related issue)"<<std::endl;
         return(1);
     }
     replace_file_name += ".replace";
@@ -40,9 +40,11 @@ int file_handler(std::ifstream* my_file_in, char **argv,
 
 int main(int argc, char **argv){
     std::string line_content;
+    std::string str_buffer;
     std::size_t found = 0;
     std::ifstream my_file_in;
     std::ofstream replace_file_ofstream;
+    bool first_iteration = true;
 
     if(parsing(argc)){
         return(1);
@@ -53,18 +55,31 @@ int main(int argc, char **argv){
     if(file_handler(&my_file_in, argv, replace_file_name, &replace_file_ofstream)){
         return(2);
     }
-    
+
 
     while(getline(my_file_in, line_content)){
-        for(std::size_t pos_a = 0; pos_a != std::string::npos; pos_a = found + 1){
+        if(!first_iteration)
+            replace_file_ofstream<< std::endl;
+        first_iteration = false;
+        for(std::size_t pos_a = 0; pos_a != std::string::npos; pos_a = found+1){
             found = line_content.find(occurence_to_change, pos_a);
-            //std::cout<<found<<std::endl;
             if(found != std::string::npos){
                 std::cout<<"needle detected";
                 std::cout<<found<<std::endl;
+                str_buffer.append(line_content, pos_a, found);
+                str_buffer.append(change_content);
+                //str_buffer.append(" ");
+                //replace_file_ofstream << str_buffer;
+                found = found + occurence_to_change.size() -  1;
+                std::cout<<found;
             }
-            else
+            else{
+                str_buffer.append(line_content, pos_a, found);
+                replace_file_ofstream << str_buffer;
+                str_buffer.clear();
                 break;
+            }
+                
         }
     }
     
