@@ -1,4 +1,6 @@
-
+#include <iostream>
+#include <fstream>
+#include <string>
 // Create a program that takes three parameters in the following order:
 // a filename and
 // two strings, s1 and s2.
@@ -11,38 +13,49 @@
 // Of course, handle unexpected inputs and errors. You must create and turn in your
 // own tests to ensure that your program works as expected.
 
-#include <iostream>
-#include <fstream>
-#include <string>
-int main(int argc, char **argv){
-    std::string line_content;
-    std::string occurence_to_change;
-    std::string change_content;
-    std::size_t found = 0;
-    std::string file_name;
-
-    if(argc!= 4){
+int parsing(int argc){
+    if(argc != 4){
         std::cout<<"invalid number of parameters (require 3)"<<std::endl;
+        return(1); //todo return failure
+    }
+    return(0);
+}
+
+int file_handler(std::ifstream* my_file_in, char **argv,
+        std::string replace_file_name, std::ofstream* replace_file_ofstream){
+    my_file_in->open(argv[1], std::ifstream::in);
+    if(!my_file_in->is_open()){
+        std::cout<<"Error: unable to open '" << argv[1] << "' (file does not exist or incorrect path)"<<std::endl;
         return(1);
     }
+    replace_file_name += ".replace";
+    replace_file_ofstream->open(replace_file_name.c_str());
+    if(!replace_file_ofstream->is_open()){
+        std::cout<<"Error: unable to create '" << replace_file_name << "' (permissions, ?)"<<std::endl;
+        my_file_in->close();
+        return(1);
+    }
+    return(0);
+}
 
-    occurence_to_change = argv[2];
-    change_content = argv[3];
+int main(int argc, char **argv){
+    std::string line_content;
+    std::size_t found = 0;
+    std::ifstream my_file_in;
+    std::ofstream replace_file_ofstream;
 
-    file_name = argv[1];
-    file_name.insert(file_name.size(), ".replace");
+    if(parsing(argc)){
+        return(1);
+    }
+    std::string occurence_to_change = argv[2];
+    std::string change_content = argv[3];
+    std::string replace_file_name = argv[1];
+    if(file_handler(&my_file_in, argv, replace_file_name, &replace_file_ofstream)){
+        return(2);
+    }
     
-    std::ifstream my_file_in(argv[1], std::ifstream::in); //protect if nofile
-    std::ofstream my_file_out;
-
-    
-
-    my_file_out.open(file_name.c_str());
-
 
     while(getline(my_file_in, line_content)){
-        //std::size_t found = line_content.find(occurence_to_change);
-
         for(std::size_t pos_a = 0; pos_a != std::string::npos; pos_a = found + 1){
             found = line_content.find(occurence_to_change, pos_a);
             //std::cout<<found<<std::endl;
@@ -55,8 +68,7 @@ int main(int argc, char **argv){
         }
     }
     
-  my_file_in.close();
-
-    //std::cout<<"Hello World"<<std::endl;
+    my_file_in.close();
+    replace_file_ofstream.close();
     return(0);
 }
