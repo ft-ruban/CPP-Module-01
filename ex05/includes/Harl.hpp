@@ -3,14 +3,26 @@
 
 #include <iostream>
 
-typedef  void (Harl::*complain)(std::string level);  // Please do this!
-
 class Harl{
     public:
         Harl( void );
         ~Harl( void );
         void complain( std::string level ){
-            // level(void);
+            std::string available_levels[4]= {"debug", "info", "warning", "error"};
+            
+            void (Harl::*functions[4])() = {
+                &Harl::debug,
+                &Harl::info,
+                &Harl::warning,
+                &Harl::error,
+            };
+
+            for (int i = 0; i < 4; i++){
+                if(available_levels[i] == level){
+                    (this->*functions[i])();
+                    return;
+                }
+            }
         }
 
     private:
