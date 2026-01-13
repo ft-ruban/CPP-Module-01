@@ -6,13 +6,18 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 15:00:15 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/17 11:43:35 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:34:08 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Zombie.hpp"
 
 Zombie* zombieHorde( int N, std::string name );
+
+// 1) We launch two different horde here with a different size and name.
+//    (if 2nd zombieHorde fail somehow we delete horde before returning 1)
+// 2) make each zombie announce themselves
+// 3) delete each of them thanks to the delete[] operator
 
 int main(void){
     Zombie* Horde;
