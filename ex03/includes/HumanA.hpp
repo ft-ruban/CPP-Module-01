@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/13 13:52:16 by ldevoude          #+#    #+#             */
+/*   Updated: 2026/01/13 13:52:19 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HUMANA_HPP
 # define HUMANA_HPP
 
@@ -8,16 +20,10 @@ class HumanA{
     public:
     HumanA(std::string human_name, Weapon& human_weapon);
     ~HumanA();
-    void setWeapon(Weapon human_weapon){
-        _human_weapon = human_weapon;
-    }
-    void setName(std::string human_name){
-        _name = human_name;
-    }
-    void attack( void ){
-        std::cout<<_name<<" attacks with their "<<_human_weapon.getType()<<std::endl;
-        return;
-    }
+    void setWeapon(Weapon human_weapon);
+    void setName(std::string human_name);
+    void attack();
+    
     private:
     std::string _name;
     Weapon& _human_weapon;

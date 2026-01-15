@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 08:18:27 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/17 11:39:02 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/13 11:13:44 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,13 @@
 
 class Zombie {
     public:
-
         Zombie( void );
         ~Zombie( void );
-        void announce( void ){
-            std::cout<<name<<": BraiiiiiiinnnzzzZ..."<<std::endl;
-        }
-        void name_set( std::string new_name){
-            name = new_name;
-        }
+        void announce( void );
+        void name_Set( std::string new_name);
 
     private:
-        std::string name;
+        std::string _name;
 };
 
 #endif
