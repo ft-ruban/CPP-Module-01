@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 14:05:50 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/22 14:46:18 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/20 11:48:08 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,51 +55,49 @@ bool file_handler(std::ifstream* source_file_ifstream, char **argv,
     return(RETURN_SUCCESS);
 }
 
-// 1) simple utils function to close our files when needed.
 
-void    close_files(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream){
-    if(source_file_ifstream)
-        source_file_ifstream->close();
-    if(target_file_ofstream)
-        target_file_ofstream->close();
-}
-
-// 1) setup the necessary variables
-// 2) while loop that will stay here until it caught all the newline of our source file
-//    2.1) if not first iteration does a line return as getline doesnt include the newline itself
-//         (and we dont want a new line at the very first iteration and once we are done)
-//    2.2) for loop that will catch any occurence of the string we need to change (represented
-//         by occurence_to_replace) if caught we append into our buffer the begining of the string
-//         until we reach the begining of the occurence then we write the last argument of user
-//         to just replace the words. once a whole line is done we append whats left and fill the
-//         target file then clean buffer. 
-//    2.3)  repeat until the EOF is reached.
+// 1) while loop that catch a line in ifstream to put it in line it continue until we stop catching lines
+//    1.1) while we dont get any occurence to replace in a line (it show by updating found with npos)
+//        1.1.1) fill result with everything UNTIL the occurence, then the replacement content then update pos
+//    1.2) update our .replace before getting back to loop if there is still a line to read else get out of function
 
 void fill_target_file(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream,
-                        std::string occurence_to_replace, std::string replacement_content){
-    std::string line_content;
-    bool first_iteration = true;
-    std::size_t found = 0;
-    std::string str_buffer;
+        std::string occurence_to_replace, std::string replacement_content)
+{
+    std::string line;
 
-    while(getline(*source_file_ifstream, line_content)){
-        if(!first_iteration)
-            *target_file_ofstream<< std::endl;
-        first_iteration = false;
-        for(std::size_t pos_a = 0; pos_a != std::string::npos; pos_a = found+1){
-            found = line_content.find(occurence_to_replace, pos_a);
-            if(found != std::string::npos){
-                str_buffer.append(line_content, pos_a, found);
-                str_buffer.append(replacement_content);
-                found = found + occurence_to_replace.size() -  1;
-                std::cout<<found;
+    while (std::getline(*source_file_ifstream, line))
+    {
+        std::string result;
+        std::size_t pos = 0;
+        bool end_line = false;
+
+        while (!end_line)
+        {
+            std::size_t found = line.find(occurence_to_replace, pos);
+
+            if (found == std::string::npos)
+            {
+                result += line.substr(pos);
+                end_line = true;
             }
             else{
-                str_buffer.append(line_content, pos_a, found);
-                *target_file_ofstream << str_buffer;
-                str_buffer.clear();
-                break;
+                result += line.substr(pos, found - pos);
+                result += replacement_content;
+                pos = found + occurence_to_replace.size();
             }
         }
+        *target_file_ofstream << result << std::endl;
     }
 }
+
+
+
+// 1) simple utils function to close our files when needed.
+
+// void    close_files(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream){
+//     if(source_file_ifstream)
+//         source_file_ifstream->close();
+//     if(target_file_ofstream)
+//         target_file_ofstream->close();
+// }

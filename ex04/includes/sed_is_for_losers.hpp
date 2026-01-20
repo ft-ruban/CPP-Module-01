@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 14:05:19 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/22 14:20:06 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/20 08:36:05 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ enum error_type {
 bool    parsing(int argc);
 bool    file_handler(std::ifstream* source_file_ifstream, char **argv,
                         std::string new_file_ofstream_name, std::ofstream* target_file_ofstream);
-void    close_files(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream);
+//void    close_files(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream);
 void    fill_target_file(std::ifstream* source_file_ifstream, std::ofstream* target_file_ofstream,
                             std::string occurence_to_replace, std::string replacement_content);
 

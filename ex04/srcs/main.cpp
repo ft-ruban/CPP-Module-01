@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 14:03:46 by ldevoude          #+#    #+#             */
-/*   Updated: 2025/12/22 14:46:27 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/20 08:31:59 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int main(int argc, char **argv){
     if(file_handler(&source_file_ifstream, argv, argv[1], &target_file_ofstream))
         return(FILE_HANDLER_FAILURE);
     fill_target_file(&source_file_ifstream, &target_file_ofstream, argv[2], argv[3]);
-    close_files(&source_file_ifstream, &target_file_ofstream);
+    //close_files(&source_file_ifstream, &target_file_ofstream);
     return(EXIT_SUCCESS);
 }
