@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 11:57:07 by ldevoude          #+#    #+#             */
-/*   Updated: 2026/01/20 11:59:28 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/22 06:12:04 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int main(int argc, char **argv){
     Harl harl;
     if(argc != 2){
-        std::cout<<"Error: c.22: no arguments provided, please give an instruction to Harl"<<std::endl;
+        std::cout<<"Error: c.22: no / too much arguments provided, please give a single instruction to Harl"<<std::endl;
         return(1);
     }
     harl.complain(argv[1]);
